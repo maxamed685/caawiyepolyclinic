@@ -1,5 +1,3 @@
-import { Link } from "react-router-dom";
-
 function About() {
   const storyPoints = [
     "Caawiye Polyclinic was founded in 2023 in Hodan, Mogadishu.",
@@ -29,7 +27,7 @@ function About() {
 
   const employees = [
     {
-      name: "ali Ahmed Mohidin",
+      name: "Ali Ahmed Mohidin",
       role: "HRManager",
       image: "/images/cali.jpeg",
     },
@@ -47,6 +45,11 @@ function About() {
       name: "Mohamed Ali Abdulahi",
       role: "Pharmacist",
       image: "/images/maxamed.jpeg",
+    },
+    {
+      name: "Khadra Nur Hassan",
+      role: "Cashier",
+      image: "/images/qarasta.jpeg",
     },
   ];
 
@@ -145,30 +148,26 @@ function About() {
           Dedicated and skilled professionals committed to your wellbeing
         </p>
 
-        <div className="grid md:grid-cols-2 xl:grid-cols-4 gap-8">
+        <div className="grid sm:grid-cols-2 xl:grid-cols-5 gap-6">
           {employees.map((employee) => (
             <article
               key={employee.name}
-              className="bg-white rounded-2xl px-8 pt-7 pb-6 text-center shadow-sm border border-slate-100 animate-fade-up hover-lift"
+              className="group bg-white rounded-2xl px-6 pt-7 pb-6 text-center shadow-sm border border-slate-100 animate-fade-up hover-lift transition-all duration-300 hover:border-blue-200"
             >
-              <img
-                src={employee.image}
-                alt={employee.name}
-                className="w-32 h-32 rounded-2xl object-cover mx-auto mb-5"
-              />
-              <h3 className="text-2xl sm:text-3xl font-bold text-slate-900 mb-2 leading-tight">{employee.name}</h3>
-              <p className="text-xl sm:text-2xl text-green-600">{employee.role}</p>
+              <div className="relative mx-auto mb-5 w-fit">
+                <img
+                  src={employee.image}
+                  alt={employee.name}
+                  className="w-28 h-28 rounded-2xl object-cover transition-transform duration-300 group-hover:scale-105"
+                />
+                <span className="absolute -bottom-2 left-1/2 -translate-x-1/2 rounded-full bg-blue-600 text-white text-[10px] font-semibold uppercase tracking-wide px-3 py-1">
+                  Staff
+                </span>
+              </div>
+              <h3 className="text-2xl font-bold text-slate-900 mb-2 leading-tight">{employee.name}</h3>
+              <p className="text-lg sm:text-xl text-green-600">{employee.role}</p>
             </article>
           ))}
-        </div>
-
-        <div className="text-center mt-10">
-          <Link
-            to="/contact"
-            className="inline-flex items-center justify-center bg-blue-600 text-white px-8 py-3 rounded-xl font-semibold hover:bg-blue-700"
-          >
-            View All Employees
-          </Link>
         </div>
       </section>
 
