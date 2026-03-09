@@ -37,27 +37,27 @@ function Contact() {
   };
 
   return (
-    <div className="bg-[#f5f7fb]">
+    <div className="bg-[#f3f7f5]">
       <motion.section
         variants={fadeUp}
         initial="hidden"
         whileInView="show"
         viewport={viewportOnce}
-        className="bg-gradient-to-r from-[#eef5ff] via-[#edf8f4] to-[#ebf3ff]"
+        className="bg-[linear-gradient(112deg,#085625_0%,#0aa45a_56%,#7ce7ca_100%)]"
       >
-        <div className="max-w-6xl mx-auto px-6 py-16">
-          <p className="text-xs uppercase tracking-wider text-blue-600 font-semibold mb-3">
+        <div className="site-container section-space-tight">
+          <p className="text-xs uppercase tracking-wider text-emerald-100 font-semibold mb-3">
             Contact Caawiye
           </p>
-          <h1 className="text-4xl sm:text-5xl font-extrabold text-slate-900 mb-4">Get In Touch</h1>
-          <p className="max-w-2xl text-slate-600">
+          <h1 className="text-4xl sm:text-5xl font-extrabold text-white mb-4">Get In Touch</h1>
+          <p className="max-w-2xl text-emerald-50">
             We are here to support your health needs. Reach out for
             emergency guidance, or general inquiries.
           </p>
         </div>
       </motion.section>
 
-      <section className="max-w-6xl mx-auto px-6 py-16 grid lg:grid-cols-3 gap-6">
+      <section className="site-container section-space-tight grid lg:grid-cols-3 gap-6">
         <motion.article
           variants={fadeUp}
           initial="hidden"
@@ -96,7 +96,7 @@ function Contact() {
         </motion.article>
       </section>
 
-      <section className="max-w-6xl mx-auto px-6 pb-20 grid lg:grid-cols-2 gap-8">
+      <section className="site-container section-space pt-0 grid lg:grid-cols-2 gap-8">
         <motion.div
           variants={fadeUp}
           initial="hidden"

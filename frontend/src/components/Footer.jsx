@@ -8,14 +8,14 @@ function Footer() {
       initial="hidden"
       whileInView="show"
       viewport={viewportOnce}
-      className="bg-[#081933] text-slate-200"
+      className="bg-[#073324] text-slate-200"
     >
       <motion.div
         variants={staggerContainer}
         initial="hidden"
         whileInView="show"
         viewport={viewportOnce}
-        className="max-w-6xl mx-auto px-6 py-14 grid md:grid-cols-3 gap-10 text-center md:text-left"
+        className="site-container py-14 grid md:grid-cols-3 gap-10 text-center md:text-left"
       >
         <motion.div variants={fadeUp}>
           <h3 className="text-lg font-bold mb-3">CAAWIYE</h3>
@@ -117,8 +117,8 @@ function Footer() {
           </ul>
         </motion.div>
       </motion.div>
-      <div className="border-t border-slate-800">
-        <div className="max-w-6xl mx-auto px-6 py-4 text-xs text-slate-400 text-center">
+      <div className="border-t border-emerald-900/70">
+        <div className="site-container py-4 text-xs text-slate-400 text-center">
           © 2026 Caawiye Polyclinic Ltd. All rights reserved.
         </div>
       </div>

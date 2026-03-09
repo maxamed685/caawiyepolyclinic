@@ -118,18 +118,26 @@ function Home() {
 
   const [visibleCards, setVisibleCards] = useState(1);
   const [activeSlide, setActiveSlide] = useState(0);
+  const [visibleEmployeeCards, setVisibleEmployeeCards] = useState(1);
+  const [activeEmployeeSlide, setActiveEmployeeSlide] = useState(0);
 
   useEffect(() => {
     const updateVisibleCards = () => {
       if (window.innerWidth >= 1024) {
         setVisibleCards(3);
-        return;
-      }
-      if (window.innerWidth >= 640) {
+      } else if (window.innerWidth >= 640) {
         setVisibleCards(2);
-        return;
+      } else {
+        setVisibleCards(1);
       }
-      setVisibleCards(1);
+
+      if (window.innerWidth >= 1200) {
+        setVisibleEmployeeCards(4);
+      } else if (window.innerWidth >= 768) {
+        setVisibleEmployeeCards(2);
+      } else {
+        setVisibleEmployeeCards(1);
+      }
     };
 
     updateVisibleCards();
@@ -138,6 +146,7 @@ function Home() {
   }, []);
 
   const maxSlide = Math.max(testimonials.length - visibleCards, 0);
+  const maxEmployeeSlide = Math.max(employees.length - visibleEmployeeCards, 0);
 
   const goNext = useCallback(() => {
     setActiveSlide((prev) => (prev >= maxSlide ? 0 : prev + 1));
@@ -147,24 +156,45 @@ function Home() {
     setActiveSlide((prev) => (prev <= 0 ? maxSlide : prev - 1));
   }, [maxSlide]);
 
+  const goEmployeeNext = useCallback(() => {
+    setActiveEmployeeSlide((prev) => (prev >= maxEmployeeSlide ? 0 : prev + 1));
+  }, [maxEmployeeSlide]);
+
+  const goEmployeePrev = useCallback(() => {
+    setActiveEmployeeSlide((prev) => (prev <= 0 ? maxEmployeeSlide : prev - 1));
+  }, [maxEmployeeSlide]);
+
   useEffect(() => {
     setActiveSlide((prev) => (prev > maxSlide ? maxSlide : prev));
   }, [maxSlide]);
+
+  useEffect(() => {
+    setActiveEmployeeSlide((prev) => (prev > maxEmployeeSlide ? maxEmployeeSlide : prev));
+  }, [maxEmployeeSlide]);
 
   useEffect(() => {
     const intervalId = window.setInterval(goNext, 4500);
     return () => window.clearInterval(intervalId);
   }, [goNext]);
 
+  useEffect(() => {
+    const intervalId = window.setInterval(goEmployeeNext, 4200);
+    return () => window.clearInterval(intervalId);
+  }, [goEmployeeNext]);
+
   return (
-    <div className="bg-[#f5f7fb]">
+    <div className="bg-[#f3f7f5]">
       <motion.section
         initial={{ opacity: 0, y: 40 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 1, ease: "easeOut" }}
-        className="bg-gradient-to-r from-[#f2f5ff] via-[#edf8f4] to-[#eaf4ff]"
+        className="relative overflow-hidden bg-[linear-gradient(112deg,#085625_0%,#0aa45a_56%,#7ce7ca_100%)]"
       >
-        <div className="max-w-6xl mx-auto px-6 py-16 grid lg:grid-cols-2 gap-10 items-center">
+        <div className="pointer-events-none absolute inset-y-0 right-0 w-[45%] hidden lg:block">
+          <img src={hero} alt="" aria-hidden="true" className="h-full w-full object-cover opacity-25" />
+          <div className="absolute inset-0 bg-gradient-to-l from-emerald-100/55 to-transparent" />
+        </div>
+        <div className="site-container section-space-tight grid lg:grid-cols-[1fr_1.02fr] gap-10 lg:gap-16 items-center relative z-10">
           <motion.div
             variants={slideLeft}
             initial="hidden"
@@ -172,16 +202,16 @@ function Home() {
             viewport={{ once: true }}
             className="animate-fade-up"
           >
-            <p className="text-xs font-semibold tracking-wide text-blue-600 uppercase mb-4">
+            <p className="text-xs font-semibold tracking-[0.08em] text-emerald-100 uppercase mb-5">
               Now accepting new patients
             </p>
-            <h1 className="text-4xl sm:text-5xl leading-tight font-extrabold mb-4 text-slate-900 animate-text-rise">
-              <span className="animate-text-shimmer">Caawiye</span>
-              <br />
-              <span className="animate-text-shimmer">Polyclinic</span> Ltd
+            <h1 className="text-5xl sm:text-6xl leading-[1.05] font-extrabold mb-5 text-white animate-text-rise max-w-2xl">
+              Caawiye Polyclinic Ltd
             </h1>
-            <p className="text-xl sm:text-2xl italic text-emerald-700 mb-4">Our prior is to care</p>
-            <p className="text-slate-600 max-w-xl mb-8">
+            <p className="text-2xl sm:text-3xl leading-tight text-emerald-50 mb-4 max-w-xl">
+              Our primary focus is comprehensive community care
+            </p>
+            <p className="text-emerald-50/95 max-w-[31rem] mb-8 text-lg leading-relaxed">
               Caawiye Polyclinic was established in 2016 by Dr. Durdur and
               other benefactors to improve community health through accessible
               and high-quality healthcare services.
@@ -191,7 +221,7 @@ function Home() {
                 to="/services"
                 whileHover={hoverScale}
                 whileTap={buttonPress}
-                className="w-full sm:w-auto text-center bg-blue-600 text-white px-6 py-3 rounded-full shadow hover:bg-blue-700"
+                className="w-full sm:w-auto text-center bg-emerald-600 text-white px-7 py-3 rounded-full shadow hover:bg-emerald-700"
               >
                 Explore Services
               </MotionLink>
@@ -199,25 +229,25 @@ function Home() {
                 to="/contact"
                 whileHover={hoverScale}
                 whileTap={buttonPress}
-                className="w-full sm:w-auto text-center bg-white text-slate-800 px-6 py-3 rounded-full border border-slate-300 hover:bg-slate-50"
+                className="w-full sm:w-auto text-center bg-transparent text-white px-7 py-3 rounded-full border border-white/60 hover:bg-white/10"
               >
                 Tour Our Clinic
               </MotionLink>
             </div>
-            <div className="grid grid-cols-3 gap-6 max-w-md">
+            <div className="grid grid-cols-3 gap-6 max-w-sm">
               <div>
-                <p className="text-2xl font-bold text-slate-900">15+</p>
-                <p className="text-xs uppercase tracking-wider text-slate-500">
+                <p className="text-4xl font-extrabold text-white leading-none mb-1">15+</p>
+                <p className="text-[11px] uppercase tracking-wider text-emerald-100">
                   Specialists
                 </p>
               </div>
               <div>
-                <p className="text-2xl font-bold text-slate-900">10k+</p>
-                <p className="text-xs uppercase tracking-wider text-slate-500">Patients</p>
+                <p className="text-4xl font-extrabold text-white leading-none mb-1">10k+</p>
+                <p className="text-[11px] uppercase tracking-wider text-emerald-100">Patients</p>
               </div>
               <div>
-                <p className="text-2xl font-bold text-slate-900">24/7</p>
-                <p className="text-xs uppercase tracking-wider text-slate-500">Emergency</p>
+                <p className="text-4xl font-extrabold text-white leading-none mb-1">24/7</p>
+                <p className="text-[11px] uppercase tracking-wider text-emerald-100">Emergency</p>
               </div>
             </div>
           </motion.div>
@@ -227,57 +257,46 @@ function Home() {
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true }}
-            className="relative animate-fade-up delay-200"
+            className="relative animate-fade-up delay-200 hidden lg:block"
           >
-            <div className="rounded-2xl border-4 border-white shadow-2xl overflow-hidden">
-              <img
-                src={hero}
-                alt="Doctor portrait"
-                className="w-full h-[300px] sm:h-[420px] object-cover animate-float"
-              />
-            </div>
-            <motion.div
-              variants={fadeUp}
-              initial="hidden"
-              whileInView="visible"
-              viewport={{ once: true }}
-              className="absolute -bottom-8 left-0 bg-white shadow-xl rounded-2xl px-5 py-4 max-w-52 sm:max-w-56 animate-fade-up delay-400"
-            >
-              <p className="font-semibold text-slate-900">Certified Excellence</p>
-              <p className="text-xs text-slate-500 mt-1">
-                Compassionate, accessible, high-quality care for every patient.
+            <div className="mx-auto max-w-[520px] rounded-3xl border border-black/20 bg-black/22 px-8 py-10 text-center shadow-2xl backdrop-blur-sm">
+              <p className="text-5xl leading-none mb-6 text-emerald-100/80">⚕</p>
+              <h2 className="text-white text-3xl sm:text-4xl font-semibold mb-6">Certified Medical Excellence</h2>
+              <p className="text-emerald-50/95 text-xl sm:text-2xl leading-snug">
+                Compassionate, accessible, and high-quality care for every
+                patient. Your health is our priority.
               </p>
-            </motion.div>
+            </div>
           </motion.div>
         </div>
       </motion.section>
 
-      <section className="max-w-6xl mx-auto px-6 py-24">
+      <section className="site-container section-space">
         <motion.div
           variants={fadeUp}
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true }}
-          className="bg-white rounded-3xl border border-slate-100 shadow-sm p-8 md:p-10 mb-16 animate-fade-up hover-lift"
+          className="max-w-5xl mx-auto bg-white rounded-3xl border border-slate-100 shadow-sm p-6 sm:p-8 md:p-10 mb-16 animate-fade-up hover-lift"
         >
-          <div className="grid md:grid-cols-[260px_1fr] gap-8 items-center">
+          <div className="grid md:grid-cols-[280px_1fr] gap-8 md:gap-10 items-center">
             <img
               src={founder.image}
               alt={founder.name}
-              className="w-full h-[220px] sm:h-[260px] rounded-2xl object-cover"
+              className="w-full h-[240px] sm:h-[300px] rounded-2xl object-cover"
             />
-            <div>
+            <div className="max-w-2xl">
               <p className="text-xs uppercase tracking-[0.2em] text-green-600 font-semibold mb-3">
                 About & Mission
               </p>
-              <h2 className="text-3xl sm:text-4xl font-extrabold text-slate-900 mb-2">{founder.name}</h2>
-              <p className="text-green-600 font-semibold mb-4">{founder.role}</p>
-              <p className="text-slate-600 leading-relaxed mb-3">
+              <h2 className="text-3xl sm:text-4xl font-extrabold text-slate-900 mb-3">{founder.name}</h2>
+              <p className="text-green-600 text-lg font-semibold mb-5">{founder.role}</p>
+              <p className="text-slate-600 text-lg leading-relaxed mb-4">
                 Since 2016, Caawiye Polyclinic has grown through continuous
                 refurbishment and development to better meet the healthcare
                 needs of the community.
               </p>
-              <p className="text-slate-600 leading-relaxed mb-6">
+              <p className="text-slate-600 text-lg leading-relaxed mb-7">
                 Our mission is to provide compassionate, accessible,
                 high-quality, and cost-effective healthcare services with
                 professionalism, respect, and patient-focused care.
@@ -286,7 +305,7 @@ function Home() {
                 to="/about"
                 whileHover={hoverScale}
                 whileTap={buttonPress}
-                className="inline-flex items-center justify-center bg-blue-600 text-white px-6 py-3 rounded-xl font-semibold hover:bg-blue-700"
+                className="inline-flex items-center justify-center bg-blue-600 text-white px-7 py-3.5 rounded-xl text-lg font-semibold hover:bg-blue-700"
               >
                 Learn More About Us
               </MotionLink>
@@ -327,14 +346,14 @@ function Home() {
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true }}
-          className="grid sm:grid-cols-2 gap-6 max-w-3xl mx-auto"
+          className="grid sm:grid-cols-2 gap-6 lg:gap-7 max-w-5xl mx-auto"
         >
           {services.map((item) => (
             <motion.article
               key={item.title}
               variants={fadeUp}
               whileHover={{ scale: 1.05 }}
-              className="relative overflow-hidden rounded-xl h-[250px] shadow-md hover-lift animate-fade-up"
+              className="relative overflow-hidden rounded-2xl h-[230px] sm:h-[260px] lg:h-[280px] shadow-md hover-lift animate-fade-up"
             >
               <img
                 src={item.image}
@@ -343,7 +362,7 @@ function Home() {
               />
               <div className="absolute inset-0 bg-gradient-to-b from-cyan-700/35 to-emerald-500/25" />
               <div className="absolute top-4 left-4">
-                <p className="bg-slate-800/45 text-white font-semibold text-2xl sm:text-3xl px-4 py-2 rounded-lg">
+                <p className="bg-slate-800/45 text-white font-semibold text-2xl sm:text-3xl px-4 py-2 rounded-xl">
                   {item.title}
                 </p>
               </div>
@@ -359,7 +378,7 @@ function Home() {
         </motion.div>
       </section>
 
-      <section className="max-w-6xl mx-auto px-6 pb-24">
+      <section className="site-container section-space-tight pt-0">
         <motion.p
           variants={fadeUp}
           initial="hidden"
@@ -409,8 +428,8 @@ function Home() {
         </motion.div>
       </section>
 
-      <section className="bg-white py-20">
-        <div className="max-w-6xl mx-auto px-6 grid lg:grid-cols-2 gap-12 items-center">
+      <section className="bg-white section-space">
+        <div className="site-container grid lg:grid-cols-2 gap-12 items-center">
           <motion.div
             variants={slideLeft}
             initial="hidden"
@@ -462,7 +481,7 @@ function Home() {
         </div>
       </section>
 
-      <section className="max-w-7xl mx-auto px-6 pb-20">
+      <section className="site-container section-space-tight pt-0">
         <motion.p
           variants={fadeUp}
           initial="hidden"
@@ -491,34 +510,58 @@ function Home() {
           Dedicated and skilled professionals committed to your wellbeing
         </motion.p>
 
-        <motion.div
-          variants={staggerContainer}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true }}
-          className="flex flex-wrap justify-center gap-8"
-        >
-          {employees.map((employee) => (
-            <motion.article
-              key={employee.name}
-              variants={fadeUp}
-              whileHover={{ scale: 1.05 }}
-              className="w-full max-w-sm md:w-[calc(50%-1rem)] xl:w-[calc(25%-1.5rem)] bg-white rounded-2xl px-8 pt-7 pb-6 text-center shadow-sm border border-slate-100 hover-lift animate-fade-up"
+        <div className="relative">
+          <button
+            type="button"
+            onClick={goEmployeePrev}
+            aria-label="Previous employee"
+            className="absolute left-0 top-1/2 -translate-y-1/2 z-10 h-10 w-10 rounded-full bg-white border border-slate-200 text-slate-700 shadow hover:bg-slate-50"
+          >
+            &#8592;
+          </button>
+
+          <button
+            type="button"
+            onClick={goEmployeeNext}
+            aria-label="Next employee"
+            className="absolute right-0 top-1/2 -translate-y-1/2 z-10 h-10 w-10 rounded-full bg-white border border-slate-200 text-slate-700 shadow hover:bg-slate-50"
+          >
+            &#8594;
+          </button>
+
+          <div className="overflow-hidden px-12">
+            <motion.div
+              variants={staggerContainer}
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true }}
+              className="flex -mx-3 transition-transform duration-500 ease-out"
+              style={{ transform: `translateX(-${(activeEmployeeSlide * 100) / visibleEmployeeCards}%)` }}
             >
-              <img
-                src={employee.image}
-                alt={employee.name}
-                className="w-32 h-32 rounded-2xl object-cover mx-auto mb-5"
-              />
-              <h3 className="text-2xl sm:text-3xl font-bold text-slate-900 mb-2">{employee.name}</h3>
-              <p className="text-xl sm:text-2xl text-green-600">{employee.role}</p>
-            </motion.article>
-          ))}
-        </motion.div>
+              {employees.map((employee) => (
+                <motion.article
+                  key={employee.name}
+                  variants={fadeUp}
+                  className="w-full md:w-1/2 xl:w-1/4 flex-shrink-0 px-3"
+                >
+                  <div className="bg-white rounded-2xl px-8 pt-7 pb-6 text-center shadow-sm border border-slate-100 hover-lift animate-fade-up h-full">
+                    <img
+                      src={employee.image}
+                      alt={employee.name}
+                      className="w-32 h-32 rounded-2xl object-cover mx-auto mb-5"
+                    />
+                    <h3 className="text-2xl sm:text-3xl font-bold text-slate-900 mb-2">{employee.name}</h3>
+                    <p className="text-xl sm:text-2xl text-green-600">{employee.role}</p>
+                  </div>
+                </motion.article>
+              ))}
+            </motion.div>
+          </div>
+        </div>
 
       </section>
 
-      <section className="max-w-6xl mx-auto px-6 py-20">
+      <section className="site-container section-space">
         <motion.h2
           variants={fadeUp}
           initial="hidden"

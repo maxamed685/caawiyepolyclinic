@@ -1,5 +1,18 @@
 @import "tailwindcss";
 
+.site-container {
+  width: min(1200px, 100% - 3rem);
+  margin-inline: auto;
+}
+
+.section-space {
+  padding-block: clamp(3.5rem, 7vw, 6rem);
+}
+
+.section-space-tight {
+  padding-block: clamp(2.5rem, 5vw, 4.5rem);
+}
+
 @keyframes fade-in-up {
   from {
     opacity: 0;

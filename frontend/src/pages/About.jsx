@@ -54,14 +54,14 @@ function About() {
   ];
 
   return (
-    <div className="bg-[#f5f7fb]">
-      <section className="bg-gradient-to-r from-[#eff5ff] via-[#edf8f4] to-[#e9f4ff]">
-        <div className="max-w-6xl mx-auto px-6 py-16">
-          <p className="text-xs uppercase tracking-[0.2em] text-green-600 font-semibold mb-2">
+    <div className="bg-[#f3f7f5]">
+      <section className="bg-[linear-gradient(112deg,#085625_0%,#0aa45a_56%,#7ce7ca_100%)]">
+        <div className="site-container section-space-tight">
+          <p className="text-xs uppercase tracking-[0.2em] text-emerald-100 font-semibold mb-2">
             About Caawiye Polyclinic
           </p>
-          <h1 className="text-4xl sm:text-5xl font-extrabold text-slate-900 mb-6 animate-text-rise">
-            <span className="animate-text-shimmer">Our Story</span>
+          <h1 className="text-4xl sm:text-5xl font-extrabold text-white mb-6 animate-text-rise">
+            <span>Our Story</span>
           </h1>
           <motion.div
             variants={fadeUp}
@@ -70,17 +70,17 @@ function About() {
             viewport={viewportOnce}
             className="space-y-4 max-w-5xl"
           >
-            <p className="text-slate-700 leading-relaxed text-lg">
+            <p className="text-emerald-50 leading-relaxed text-lg">
               Caawiye Polyclinic was established in 2016 by Dr. Durdur and
               other benefactors with the aim of improving community health
               through accessible and high-quality healthcare services.
             </p>
-            <p className="text-slate-700 leading-relaxed text-lg">
+            <p className="text-emerald-50 leading-relaxed text-lg">
               Since its establishment, the clinic has continued to grow through
               ongoing refurbishment and development, strengthening its ability
               to serve patients and meet the healthcare needs of the community.
             </p>
-            <p className="text-slate-700 leading-relaxed text-lg">
+            <p className="text-emerald-50 leading-relaxed text-lg">
               Caawiye Polyclinic is committed to providing professional,
               compassionate, and patient-focused medical services that improve
               the overall health and well-being of the people it serves.
@@ -89,8 +89,8 @@ function About() {
         </div>
       </section>
 
-      <section className="bg-white py-16">
-        <div className="max-w-6xl mx-auto px-6">
+      <section className="bg-white section-space-tight">
+        <div className="site-container">
           <p className="text-xs uppercase tracking-[0.2em] text-green-600 font-semibold mb-2 text-center">
             Mission & Vision
           </p>
@@ -153,7 +153,7 @@ function About() {
         </div>
       </section>
 
-      <section className="max-w-6xl mx-auto px-6 py-16">
+      <section className="site-container section-space-tight">
         <p className="text-xs uppercase tracking-[0.2em] text-green-600 font-semibold mb-2 text-center">
           Our Goals
         </p>
@@ -178,8 +178,8 @@ function About() {
         </motion.div>
       </section>
 
-      <section className="bg-white py-16">
-        <div className="max-w-6xl mx-auto px-6">
+      <section className="bg-white section-space-tight">
+        <div className="site-container">
           <p className="text-xs uppercase tracking-[0.2em] text-green-600 font-semibold mb-2 text-center">
             Our Values
           </p>
@@ -206,7 +206,7 @@ function About() {
         </div>
       </section>
 
-      <section className="max-w-6xl mx-auto px-6 py-16">
+      <section className="site-container section-space-tight">
         <p className="text-xs uppercase tracking-[0.2em] text-green-600 font-semibold mb-2 text-center">
           Leadership
         </p>

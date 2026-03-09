@@ -18,9 +18,9 @@ function Navbar() {
       initial={{ y: -14, opacity: 0 }}
       animate={{ y: 0, opacity: 1 }}
       transition={{ duration: 0.45, ease: "easeOut" }}
-      className="sticky top-0 z-50 border-b border-slate-200 bg-white shadow-sm"
+      className="sticky top-0 z-50 border-b border-emerald-100 bg-white/95 backdrop-blur shadow-sm"
     >
-      <div className="max-w-6xl mx-auto px-6 py-3 md:py-4 flex items-center justify-between gap-6">
+      <div className="site-container py-3 md:py-4 flex items-center justify-between gap-6">
         <Link to="/" className="flex items-center gap-3 md:gap-4" onClick={() => setMenuOpen(false)}>
           <span className="grid h-14 w-14 place-items-center rounded-xl border border-slate-200 bg-white shadow-sm ring-2 ring-green-100 md:h-16 md:w-16 animate-glow">
             <img
@@ -31,7 +31,7 @@ function Navbar() {
               fetchPriority="high"
             />
           </span>
-          <span className="text-sm sm:text-base md:text-3xl font-black tracking-tight text-green-600">
+          <span className="text-sm sm:text-base md:text-3xl font-black tracking-tight text-emerald-700">
             CAAWIYE POLYCLINIC.LTD
           </span>
         </Link>
@@ -61,8 +61,8 @@ function Navbar() {
                 className={({ isActive }) =>
                   `rounded-lg px-4 py-2 text-base font-semibold transition-all duration-300 ${
                     isActive
-                      ? "bg-blue-100 text-blue-700"
-                      : "text-slate-700 hover:bg-slate-100 hover:text-slate-900"
+                      ? "bg-emerald-700 text-white shadow-sm"
+                      : "text-slate-700 hover:bg-emerald-50 hover:text-emerald-800"
                   }`
                 }
               >
@@ -96,8 +96,8 @@ function Navbar() {
                     className={({ isActive }) =>
                       `rounded-lg px-4 py-2 text-sm font-semibold transition-colors ${
                         isActive
-                          ? "bg-blue-100 text-blue-700"
-                          : "text-slate-700 hover:bg-slate-100 hover:text-slate-900"
+                          ? "bg-emerald-700 text-white"
+                          : "text-slate-700 hover:bg-emerald-50 hover:text-emerald-800"
                       }`
                     }
                   >

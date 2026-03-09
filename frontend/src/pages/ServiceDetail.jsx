@@ -50,7 +50,7 @@ function ServiceDetail({ serviceKey }) {
 
   if (!service) {
     return (
-      <div className="max-w-4xl mx-auto px-6 py-20">
+      <div className="site-container section-space">
         <h1 className="text-3xl sm:text-4xl font-bold text-slate-900 mb-4">Service not found</h1>
         <Link to="/services" className="text-blue-600 font-semibold hover:underline">
           Back to Services
@@ -60,14 +60,14 @@ function ServiceDetail({ serviceKey }) {
   }
 
   return (
-    <div className="relative overflow-hidden bg-slate-100">
-      <div className="pointer-events-none absolute -top-24 left-1/2 h-72 w-72 -translate-x-1/2 rounded-full bg-blue-200/55 blur-3xl" />
+    <div className="relative overflow-hidden bg-[#f3f7f5]">
+      <div className="pointer-events-none absolute -top-24 left-1/2 h-72 w-72 -translate-x-1/2 rounded-full bg-emerald-200/55 blur-3xl" />
       <div
         className={`pointer-events-none absolute right-0 top-40 h-80 w-80 rounded-full bg-gradient-to-b ${service.accent} blur-3xl`}
       />
 
-      <section className="relative max-w-5xl mx-auto px-6 pt-20 pb-12">
-        <p className="inline-flex items-center rounded-full bg-blue-100 px-4 py-2 text-xs uppercase tracking-[0.18em] text-blue-700 font-bold mb-5">
+      <section className="relative site-container section-space-tight">
+        <p className="inline-flex items-center rounded-full bg-emerald-100 px-4 py-2 text-xs uppercase tracking-[0.18em] text-emerald-700 font-bold mb-5">
           Service Detail
         </p>
         <h1 className="text-3xl sm:text-4xl md:text-6xl font-extrabold text-slate-900 mb-5 leading-tight">
@@ -85,7 +85,7 @@ function ServiceDetail({ serviceKey }) {
         </p>
       </section>
 
-      <section className="relative max-w-5xl mx-auto px-6 pb-24">
+      <section className="relative site-container section-space pt-0">
         <div className="relative overflow-hidden bg-white rounded-3xl p-8 md:p-10 shadow-sm border border-slate-200">
           <div
             className={`absolute inset-x-0 top-0 h-24 rounded-t-3xl bg-gradient-to-b ${service.accent}`}
