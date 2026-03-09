@@ -1,6 +1,8 @@
 import { useState } from "react";
+import { AnimatePresence, motion } from "framer-motion";
 import { Link, NavLink } from "react-router-dom";
 import logo from "../assets/logo.jpeg";
+import { fadeUp, staggerContainer } from "../lib/motion";
 
 function Navbar() {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -12,7 +14,12 @@ function Navbar() {
   ];
 
   return (
-    <nav className="sticky top-0 z-50 border-b border-slate-200 bg-white shadow-sm animate-fade">
+    <motion.nav
+      initial={{ y: -14, opacity: 0 }}
+      animate={{ y: 0, opacity: 1 }}
+      transition={{ duration: 0.45, ease: "easeOut" }}
+      className="sticky top-0 z-50 border-b border-slate-200 bg-white shadow-sm"
+    >
       <div className="max-w-6xl mx-auto px-6 py-3 md:py-4 flex items-center justify-between gap-6">
         <Link to="/" className="flex items-center gap-3 md:gap-4" onClick={() => setMenuOpen(false)}>
           <span className="grid h-14 w-14 place-items-center rounded-xl border border-slate-200 bg-white shadow-sm ring-2 ring-green-100 md:h-16 md:w-16 animate-glow">
@@ -41,35 +48,18 @@ function Navbar() {
           </svg>
         </button>
 
-        <div className="hidden md:flex items-center gap-2">
+        <motion.div
+          variants={staggerContainer}
+          initial="hidden"
+          animate="show"
+          className="hidden md:flex items-center gap-2"
+        >
           {links.map((link) => (
-            <NavLink
-              key={link.to}
-              to={link.to}
-              className={({ isActive }) =>
-                `rounded-lg px-4 py-2 text-base font-semibold transition-all duration-300 hover:-translate-y-0.5 ${
-                  isActive
-                    ? "bg-blue-100 text-blue-700"
-                    : "text-slate-700 hover:bg-slate-100 hover:text-slate-900"
-                }`
-              }
-            >
-              {link.label}
-            </NavLink>
-          ))}
-        </div>
-      </div>
-
-      {menuOpen && (
-        <div className="md:hidden border-t border-slate-200 bg-white px-6 py-3 animate-fade-up">
-          <div className="flex flex-col gap-2">
-            {links.map((link) => (
+            <motion.div key={link.to} variants={fadeUp} whileHover={{ y: -2 }}>
               <NavLink
-                key={link.to}
                 to={link.to}
-                onClick={() => setMenuOpen(false)}
                 className={({ isActive }) =>
-                  `rounded-lg px-4 py-2 text-sm font-semibold transition-colors ${
+                  `rounded-lg px-4 py-2 text-base font-semibold transition-all duration-300 ${
                     isActive
                       ? "bg-blue-100 text-blue-700"
                       : "text-slate-700 hover:bg-slate-100 hover:text-slate-900"
@@ -78,11 +68,48 @@ function Navbar() {
               >
                 {link.label}
               </NavLink>
-            ))}
-          </div>
-        </div>
-      )}
-    </nav>
+            </motion.div>
+          ))}
+        </motion.div>
+      </div>
+
+      <AnimatePresence initial={false}>
+        {menuOpen && (
+          <motion.div
+            initial={{ height: 0, opacity: 0 }}
+            animate={{ height: "auto", opacity: 1 }}
+            exit={{ height: 0, opacity: 0 }}
+            transition={{ duration: 0.25, ease: "easeOut" }}
+            className="md:hidden border-t border-slate-200 bg-white px-6 overflow-hidden"
+          >
+            <motion.div
+              variants={staggerContainer}
+              initial="hidden"
+              animate="show"
+              className="flex flex-col gap-2 py-3"
+            >
+              {links.map((link) => (
+                <motion.div key={link.to} variants={fadeUp}>
+                  <NavLink
+                    to={link.to}
+                    onClick={() => setMenuOpen(false)}
+                    className={({ isActive }) =>
+                      `rounded-lg px-4 py-2 text-sm font-semibold transition-colors ${
+                        isActive
+                          ? "bg-blue-100 text-blue-700"
+                          : "text-slate-700 hover:bg-slate-100 hover:text-slate-900"
+                      }`
+                    }
+                  >
+                    {link.label}
+                  </NavLink>
+                </motion.div>
+              ))}
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+    </motion.nav>
   );
 }
 

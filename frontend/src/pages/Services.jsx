@@ -1,6 +1,9 @@
 import { Link } from "react-router-dom";
+import { motion } from "framer-motion";
+import { fadeUp, staggerContainer, viewportOnce } from "../lib/motion";
 
 function Services() {
+  const MotionLink = motion(Link);
   const services = [
     {
       title: "General Practitioner (GP)",
@@ -36,7 +39,13 @@ function Services() {
       <div className="pointer-events-none absolute -top-24 left-1/2 h-64 w-64 -translate-x-1/2 rounded-full bg-blue-200/60 blur-3xl" />
       <div className="pointer-events-none absolute right-0 top-40 h-72 w-72 rounded-full bg-green-200/50 blur-3xl" />
 
-      <section className="relative max-w-6xl mx-auto px-6 pt-20 pb-14 text-center animate-fade-up">
+      <motion.section
+        variants={fadeUp}
+        initial="hidden"
+        whileInView="show"
+        viewport={viewportOnce}
+        className="relative max-w-6xl mx-auto px-6 pt-20 pb-14 text-center"
+      >
         <p className="inline-flex items-center gap-2 text-xs tracking-[0.18em] uppercase text-blue-700 font-bold bg-blue-100 px-5 py-2.5 rounded-full mb-8">
           ✚ Excellence In Care
         </p>
@@ -48,14 +57,23 @@ function Services() {
           Polyclinic Ltd. We combine advanced technology with compassionate care
           for your well-being.
         </p>
-      </section>
+      </motion.section>
 
       <section className="relative max-w-7xl mx-auto px-6 pb-24">
-        <div className="grid md:grid-cols-2 xl:grid-cols-3 gap-8">
+        <motion.div
+          variants={staggerContainer}
+          initial="hidden"
+          whileInView="show"
+          viewport={viewportOnce}
+          className="grid md:grid-cols-2 xl:grid-cols-3 gap-8"
+        >
           {services.map((service) => (
-            <article
+            <motion.article
               key={service.title}
-              className="group relative bg-white rounded-2xl p-8 border border-slate-200 shadow-sm transition-all duration-300 hover:shadow-xl hover:-translate-y-1 animate-fade-up"
+              variants={fadeUp}
+              whileHover={{ y: -8 }}
+              transition={{ type: "spring", stiffness: 260, damping: 22 }}
+              className="group relative bg-white rounded-2xl p-8 border border-slate-200 shadow-sm"
             >
               <div
                 className={`absolute inset-x-0 top-0 h-20 rounded-t-2xl bg-gradient-to-b ${service.accent}`}
@@ -71,18 +89,20 @@ function Services() {
               <p className="relative text-slate-600 text-base sm:text-xl leading-relaxed mb-8">
                 {service.description}
               </p>
-              <Link
+              <MotionLink
                 to={service.link}
                 className="relative inline-flex items-center gap-2 text-blue-700 font-semibold text-lg cursor-pointer"
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.98 }}
               >
                 Learn More
                 <span className="transition-transform duration-300 group-hover:translate-x-1">
                   →
                 </span>
-              </Link>
-            </article>
+              </MotionLink>
+            </motion.article>
           ))}
-        </div>
+        </motion.div>
       </section>
     </div>
   );

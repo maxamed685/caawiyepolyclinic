@@ -1,4 +1,6 @@
 import { useState } from "react";
+import { motion } from "framer-motion";
+import { fadeUp, staggerContainer, viewportOnce } from "../lib/motion";
 
 function Contact() {
   const [status, setStatus] = useState({ type: "", message: "" });
@@ -36,7 +38,13 @@ function Contact() {
 
   return (
     <div className="bg-[#f5f7fb]">
-      <section className="bg-gradient-to-r from-[#eef5ff] via-[#edf8f4] to-[#ebf3ff]">
+      <motion.section
+        variants={fadeUp}
+        initial="hidden"
+        whileInView="show"
+        viewport={viewportOnce}
+        className="bg-gradient-to-r from-[#eef5ff] via-[#edf8f4] to-[#ebf3ff]"
+      >
         <div className="max-w-6xl mx-auto px-6 py-16">
           <p className="text-xs uppercase tracking-wider text-blue-600 font-semibold mb-3">
             Contact Caawiye
@@ -47,28 +55,55 @@ function Contact() {
             emergency guidance, or general inquiries.
           </p>
         </div>
-      </section>
+      </motion.section>
 
       <section className="max-w-6xl mx-auto px-6 py-16 grid lg:grid-cols-3 gap-6">
-        <article className="bg-white rounded-2xl p-6 shadow-sm animate-fade-up hover-lift">
+        <motion.article
+          variants={fadeUp}
+          initial="hidden"
+          whileInView="show"
+          viewport={viewportOnce}
+          whileHover={{ y: -8 }}
+          className="bg-white rounded-2xl p-6 shadow-sm"
+        >
           <p className="text-blue-600 text-sm font-semibold mb-2">Phone</p>
           <h3 className="text-xl font-bold text-slate-900 mb-1">+252 61 000 0000</h3>
           <p className="text-sm text-slate-600">Call us anytime for urgent support.</p>
-        </article>
-        <article className="bg-white rounded-2xl p-6 shadow-sm animate-fade-up hover-lift">
+        </motion.article>
+        <motion.article
+          variants={fadeUp}
+          initial="hidden"
+          whileInView="show"
+          viewport={viewportOnce}
+          whileHover={{ y: -8 }}
+          className="bg-white rounded-2xl p-6 shadow-sm"
+        >
           <p className="text-blue-600 text-sm font-semibold mb-2">Location</p>
           <h3 className="text-xl font-bold text-slate-900 mb-1">Hodan, Mogadishu</h3>
           <p className="text-sm text-slate-600">Near Taleex road, easy parking available.</p>
-        </article>
-        <article className="bg-white rounded-2xl p-6 shadow-sm animate-fade-up hover-lift">
+        </motion.article>
+        <motion.article
+          variants={fadeUp}
+          initial="hidden"
+          whileInView="show"
+          viewport={viewportOnce}
+          whileHover={{ y: -8 }}
+          className="bg-white rounded-2xl p-6 shadow-sm"
+        >
           <p className="text-blue-600 text-sm font-semibold mb-2">Email</p>
           <h3 className="text-xl font-bold text-slate-900 mb-1">contact@caawiyeclinic.com</h3>
           <p className="text-sm text-slate-600">We reply within one business day.</p>
-        </article>
+        </motion.article>
       </section>
 
       <section className="max-w-6xl mx-auto px-6 pb-20 grid lg:grid-cols-2 gap-8">
-        <div className="bg-white rounded-2xl p-7 shadow-sm animate-fade-up">
+        <motion.div
+          variants={fadeUp}
+          initial="hidden"
+          whileInView="show"
+          viewport={viewportOnce}
+          className="bg-white rounded-2xl p-7 shadow-sm"
+        >
           <h2 className="text-2xl sm:text-3xl font-bold text-slate-900 mb-4">Send Us a Message</h2>
           <form onSubmit={handleSubmit} className="grid gap-4">
             <input
@@ -99,12 +134,14 @@ function Contact() {
               rows="5"
               className="border border-slate-300 rounded-lg px-4 py-3 outline-none focus:ring-2 focus:ring-blue-500"
             />
-            <button
+            <motion.button
               type="submit"
               className="bg-blue-600 text-white px-6 py-3 rounded-full font-semibold hover:bg-blue-700 w-full sm:w-fit"
+              whileHover={{ scale: 1.04 }}
+              whileTap={{ scale: 0.98 }}
             >
               Send Message
-            </button>
+            </motion.button>
           </form>
           {status.message && (
             <p
@@ -114,10 +151,16 @@ function Contact() {
               {status.message}
             </p>
           )}
-        </div>
+        </motion.div>
 
-        <div className="space-y-6">
-          <div className="bg-white rounded-2xl p-7 shadow-sm animate-fade-up">
+        <motion.div
+          variants={staggerContainer}
+          initial="hidden"
+          whileInView="show"
+          viewport={viewportOnce}
+          className="space-y-6"
+        >
+          <motion.div variants={fadeUp} className="bg-white rounded-2xl p-7 shadow-sm">
             <h2 className="text-xl sm:text-2xl font-bold text-slate-900 mb-4">Opening Hours</h2>
             <ul className="space-y-3 text-slate-700">
               <li className="flex justify-between border-b border-slate-100 pb-2">
@@ -133,15 +176,15 @@ function Contact() {
                 <span>Emergency Only</span>
               </li>
             </ul>
-          </div>
-          <div className="rounded-2xl overflow-hidden shadow-sm animate-fade-up">
+          </motion.div>
+          <motion.div variants={fadeUp} className="rounded-2xl overflow-hidden shadow-sm">
             <img
               src="https://images.unsplash.com/photo-1579684385127-1ef15d508118?auto=format&fit=crop&w=1000&q=80"
               alt="Medical staff at clinic"
               className="w-full h-[220px] sm:h-[280px] object-cover"
             />
-          </div>
-        </div>
+          </motion.div>
+        </motion.div>
       </section>
     </div>
   );

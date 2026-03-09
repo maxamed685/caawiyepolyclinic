@@ -1,55 +1,55 @@
+import { motion } from "framer-motion";
+import { fadeUp, staggerContainer, viewportOnce } from "../lib/motion";
+
 function About() {
-  const storyPoints = [
-    "Caawiye Polyclinic was founded in 2023 in Hodan, Mogadishu.",
-    "It was established to provide affordable, reliable, and patient-centered healthcare.",
-    "The clinic was created to address delays in diagnosis and limited access to trusted medical support in the community.",
+  const missionPoints = [
+    "Promoting better health standards within the community",
+    "Improving patient health through quality medical care",
+    "Providing accurate diagnosis and effective treatment",
+    "Offering comprehensive healthcare services",
+    "Contributing to the overall well-being of patients",
+    "Delivering safe, evidence-based healthcare through qualified medical professionals",
   ];
 
-  const founder = {
-    name: "Dr. Abdulkadir Abdule Osman",
-    title: "Founder, Caawiye Polyclinic",
-    education:
-      "MBBS, University of Somalia; Postgraduate training in Family Medicine and Primary Care.",
-    experience:
-      "Over 10 years of clinical practice across outpatient care, preventive medicine, and community health programs.",
-    vision:
-      "Build a trusted neighborhood clinic where every family can access quality healthcare with dignity and respect.",
-    image:
-      "images/hero.png",
-  };
-
-  const coreValues = [
-    "Compassion",
-    "Integrity",
-    "Professionalism",
-    "Accessibility",
+  const goals = [
+    "Continuously improve healthcare services through quality management",
+    "Focus on patients and deliver high-quality care",
+    "Collaborate with partners to support quality improvement",
+    "Empower employees to make responsible and effective decisions",
+    "Promote training, teamwork, and open communication",
+    "Maintain the highest ethical standards in protecting the public and the environment",
   ];
 
-  const employees = [
+  const values = [
     {
-      name: "Ali Ahmed Mohidin",
-      role: "HRManager",
-      image: "/images/cali.jpeg",
+      title: "Teamwork",
+      description:
+        "Working together to achieve the best outcomes for our patients.",
     },
     {
-      name: "Mas'ud Said Ibrahim",
-      role: "Nurse",
-      image: "/images/qarasta.jpeg",
+      title: "Excellence",
+      description:
+        "Striving for the highest standards in healthcare delivery.",
     },
     {
-      name: "Daahir Imail Hassan",
-      role: "Lab Technician",
-      image: "/images/lab.jpeg",
+      title: "Confidentiality and Consistency",
+      description:
+        "Protecting patient privacy and ensuring reliable, continuous improvement.",
     },
     {
-      name: "Mohamed Ali Abdulahi",
-      role: "Pharmacist",
-      image: "/images/maxamed.jpeg",
+      title: "Accountability",
+      description:
+        "Taking responsibility for the quality and safety of our services.",
     },
     {
-      name: "Khadra Nur Hassan",
-      role: "Cashier",
-      image: "/images/qarasta.jpeg",
+      title: "Respect",
+      description:
+        "Treating patients, families, and colleagues with dignity and compassion.",
+    },
+    {
+      title: "Empowerment and Encouragement",
+      description:
+        "Supporting staff development and encouraging innovation in healthcare delivery.",
     },
   ];
 
@@ -58,135 +58,172 @@ function About() {
       <section className="bg-gradient-to-r from-[#eff5ff] via-[#edf8f4] to-[#e9f4ff]">
         <div className="max-w-6xl mx-auto px-6 py-16">
           <p className="text-xs uppercase tracking-[0.2em] text-green-600 font-semibold mb-2">
-            Our Story
+            About Caawiye Polyclinic
           </p>
           <h1 className="text-4xl sm:text-5xl font-extrabold text-slate-900 mb-6 animate-text-rise">
             <span className="animate-text-shimmer">Our Story</span>
           </h1>
-          <div className="space-y-3 max-w-4xl animate-fade-up">
-            {storyPoints.map((point) => (
-              <p key={point} className="text-slate-600 leading-relaxed text-lg">
-                {point}
-              </p>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      <section className="max-w-6xl mx-auto px-6 py-16">
-        <p className="text-xs uppercase tracking-[0.2em] text-green-600 font-semibold mb-2 text-center">
-          Our Founder
-        </p>
-        <h2 className="text-3xl sm:text-4xl font-bold text-slate-900 text-center mb-10">Meet Our Founder</h2>
-
-        <div className="bg-white rounded-3xl border border-slate-100 shadow-sm p-8 md:p-10 grid lg:grid-cols-[300px_1fr] gap-8 items-start animate-fade-up hover-lift">
-          <img
-            src={founder.image}
-            alt={founder.name}
-            className="w-full h-[240px] sm:h-[320px] object-cover rounded-2xl"
-          />
-
-          <div>
-            <h3 className="text-2xl sm:text-3xl font-extrabold text-slate-900 mb-1">{founder.name}</h3>
-            <p className="text-green-600 font-semibold mb-6">{founder.title}</p>
-
-            <div className="space-y-5 text-slate-700">
-              <div>
-                <p className="text-xs uppercase tracking-wider text-slate-500 mb-1">Education</p>
-                <p>{founder.education}</p>
-              </div>
-
-              <div>
-                <p className="text-xs uppercase tracking-wider text-slate-500 mb-1">Experience</p>
-                <p>{founder.experience}</p>
-              </div>
-
-              <div>
-                <p className="text-xs uppercase tracking-wider text-slate-500 mb-1">Vision</p>
-                <p>{founder.vision}</p>
-              </div>
-            </div>
-          </div>
+          <motion.div
+            variants={fadeUp}
+            initial="hidden"
+            whileInView="show"
+            viewport={viewportOnce}
+            className="space-y-4 max-w-5xl"
+          >
+            <p className="text-slate-700 leading-relaxed text-lg">
+              Caawiye Polyclinic was established in 2016 by Dr. Durdur and
+              other benefactors with the aim of improving community health
+              through accessible and high-quality healthcare services.
+            </p>
+            <p className="text-slate-700 leading-relaxed text-lg">
+              Since its establishment, the clinic has continued to grow through
+              ongoing refurbishment and development, strengthening its ability
+              to serve patients and meet the healthcare needs of the community.
+            </p>
+            <p className="text-slate-700 leading-relaxed text-lg">
+              Caawiye Polyclinic is committed to providing professional,
+              compassionate, and patient-focused medical services that improve
+              the overall health and well-being of the people it serves.
+            </p>
+          </motion.div>
         </div>
       </section>
 
       <section className="bg-white py-16">
         <div className="max-w-6xl mx-auto px-6">
           <p className="text-xs uppercase tracking-[0.2em] text-green-600 font-semibold mb-2 text-center">
-            Direction
+            Mission & Vision
           </p>
-          <h2 className="text-3xl sm:text-4xl font-bold text-slate-900 text-center mb-10">Vision & Mission</h2>
+          <h2 className="text-3xl sm:text-4xl font-bold text-slate-900 text-center mb-10">Our Direction</h2>
 
-          <div className="grid md:grid-cols-2 gap-6">
-            <article className="bg-[#f8fbff] rounded-2xl p-8 border border-slate-100 shadow-sm text-center animate-fade-up hover-lift">
-              <h3 className="text-2xl font-bold text-slate-900 mb-3">Our Vision</h3>
-              <p className="text-slate-600">
-                To become a leading primary healthcare center in Mogadishu,
-                known for quality services, trust, and continuity of care.
-              </p>
-            </article>
-
-            <article className="bg-[#f8fbff] rounded-2xl p-8 border border-slate-100 shadow-sm text-center animate-fade-up hover-lift">
-              <h3 className="text-2xl font-bold text-slate-900 mb-3">Our Mission</h3>
-              <p className="text-slate-600">
-                To deliver compassionate and professional healthcare that is
-                affordable, accessible, and responsive to community needs.
-              </p>
-            </article>
-          </div>
-        </div>
-      </section>
-
-      <section className="max-w-7xl mx-auto px-6 py-16">
-        <p className="text-center text-xs tracking-[0.2em] uppercase text-green-600 font-semibold mb-4">
-          Our Employee Team
-        </p>
-        <h2 className="text-4xl sm:text-5xl md:text-6xl font-extrabold text-center text-slate-900 mb-4">
-          Meet Our Employees
-        </h2>
-        <p className="text-center text-slate-600 text-lg md:text-2xl mb-12">
-          Dedicated and skilled professionals committed to your wellbeing
-        </p>
-
-        <div className="grid sm:grid-cols-2 xl:grid-cols-5 gap-6">
-          {employees.map((employee) => (
-            <article
-              key={employee.name}
-              className="group bg-white rounded-2xl px-6 pt-7 pb-6 text-center shadow-sm border border-slate-100 animate-fade-up hover-lift transition-all duration-300 hover:border-blue-200"
+          <motion.div
+            variants={staggerContainer}
+            initial="hidden"
+            whileInView="show"
+            viewport={viewportOnce}
+            className="grid md:grid-cols-2 gap-6"
+          >
+            <motion.article
+              variants={fadeUp}
+              className="bg-[#f8fbff] rounded-2xl p-8 border border-slate-100 shadow-sm"
             >
-              <div className="relative mx-auto mb-5 w-fit">
-                <img
-                  src={employee.image}
-                  alt={employee.name}
-                  className="w-28 h-28 rounded-2xl object-cover transition-transform duration-300 group-hover:scale-105"
-                />
-                <span className="absolute -bottom-2 left-1/2 -translate-x-1/2 rounded-full bg-blue-600 text-white text-[10px] font-semibold uppercase tracking-wide px-3 py-1">
-                  Staff
-                </span>
-              </div>
-              <h3 className="text-2xl font-bold text-slate-900 mb-2 leading-tight">{employee.name}</h3>
-              <p className="text-lg sm:text-xl text-green-600">{employee.role}</p>
-            </article>
-          ))}
+              <h3 className="text-2xl font-bold text-slate-900 mb-4">Mission</h3>
+              <p className="text-slate-700 mb-4 leading-relaxed">
+                The mission of Caawiye Polyclinic is to provide compassionate,
+                accessible, high-quality, and cost-effective healthcare
+                services to the community.
+              </p>
+              <p className="text-slate-700 mb-4 leading-relaxed">
+                The clinic is dedicated to delivering medical care with
+                professionalism, compassion, and respect to all patients who
+                seek its services.
+              </p>
+              <ul className="space-y-2 text-slate-700 list-disc list-inside">
+                {missionPoints.map((point) => (
+                  <li key={point}>{point}</li>
+                ))}
+              </ul>
+            </motion.article>
+
+            <motion.article
+              variants={fadeUp}
+              className="bg-[#f8fbff] rounded-2xl p-8 border border-slate-100 shadow-sm"
+            >
+              <h3 className="text-2xl font-bold text-slate-900 mb-4">Vision</h3>
+              <p className="text-slate-700 leading-relaxed mb-4">
+                The vision of Caawiye Polyclinic is to become a globally
+                recognized healthcare provider and medical training facility,
+                delivering excellent patient care through evidence-based medical
+                practices and continuous development.
+              </p>
+              <p className="text-slate-700 leading-relaxed mb-4">
+                The clinic aims to build a first-class patient-focused
+                healthcare service based on high quality standards, while
+                ensuring services are delivered in a well-managed and
+                supportive environment.
+              </p>
+              <p className="text-slate-700 leading-relaxed">
+                Caawiye Polyclinic also strives to invest in education,
+                training, and professional development to maximize the
+                potential of healthcare staff and continuously improve the
+                quality of services provided.
+              </p>
+            </motion.article>
+          </motion.div>
         </div>
       </section>
 
       <section className="max-w-6xl mx-auto px-6 py-16">
         <p className="text-xs uppercase tracking-[0.2em] text-green-600 font-semibold mb-2 text-center">
-          Core Values
+          Our Goals
         </p>
-        <h2 className="text-3xl sm:text-4xl font-bold text-slate-900 text-center mb-10">What We Stand For</h2>
+        <h2 className="text-3xl sm:text-4xl font-bold text-slate-900 text-center mb-10">What We Aim To Achieve</h2>
 
-        <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-5">
-          {coreValues.map((value) => (
-            <article
-              key={value}
-              className="bg-white rounded-2xl p-6 border border-slate-100 shadow-sm text-center animate-fade-up hover-lift"
+        <motion.div
+          variants={staggerContainer}
+          initial="hidden"
+          whileInView="show"
+          viewport={viewportOnce}
+          className="grid sm:grid-cols-2 gap-5"
+        >
+          {goals.map((goal) => (
+            <motion.article
+              key={goal}
+              variants={fadeUp}
+              className="bg-white rounded-2xl p-6 border border-slate-100 shadow-sm"
             >
-              <p className="text-xl font-bold text-slate-900">{value}</p>
-            </article>
+              <p className="text-slate-700">{goal}</p>
+            </motion.article>
           ))}
+        </motion.div>
+      </section>
+
+      <section className="bg-white py-16">
+        <div className="max-w-6xl mx-auto px-6">
+          <p className="text-xs uppercase tracking-[0.2em] text-green-600 font-semibold mb-2 text-center">
+            Our Values
+          </p>
+          <h2 className="text-3xl sm:text-4xl font-bold text-slate-900 text-center mb-10">What Guides Our Work</h2>
+
+          <motion.div
+            variants={staggerContainer}
+            initial="hidden"
+            whileInView="show"
+            viewport={viewportOnce}
+            className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5"
+          >
+            {values.map((value) => (
+              <motion.article
+                key={value.title}
+                variants={fadeUp}
+                className="bg-[#f8fbff] rounded-2xl p-6 border border-slate-100 shadow-sm"
+              >
+                <h3 className="text-lg font-bold text-slate-900 mb-2">{value.title}</h3>
+                <p className="text-slate-700">{value.description}</p>
+              </motion.article>
+            ))}
+          </motion.div>
         </div>
+      </section>
+
+      <section className="max-w-6xl mx-auto px-6 py-16">
+        <p className="text-xs uppercase tracking-[0.2em] text-green-600 font-semibold mb-2 text-center">
+          Leadership
+        </p>
+        <h2 className="text-3xl sm:text-4xl font-bold text-slate-900 text-center mb-6">Leadership Team</h2>
+        <motion.div
+          variants={fadeUp}
+          initial="hidden"
+          whileInView="show"
+          viewport={viewportOnce}
+          className="bg-white rounded-2xl p-8 border border-slate-100 shadow-sm max-w-3xl mx-auto text-center"
+        >
+          <p className="text-slate-700 leading-relaxed text-lg">
+            Caawiye Polyclinic is led by Dr. Durdur together with a dedicated
+            team of healthcare professionals committed to high-quality,
+            compassionate, and patient-focused care.
+          </p>
+        </motion.div>
       </section>
     </div>
   );
