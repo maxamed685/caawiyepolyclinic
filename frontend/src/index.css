@@ -1,5 +1,15 @@
 @import "tailwindcss";
 
+html,
+body {
+  width: 100%;
+  overflow-x: clip;
+}
+
+body {
+  margin: 0;
+}
+
 .site-container {
   width: min(1200px, 100% - 3rem);
   margin-inline: auto;

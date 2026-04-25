@@ -67,7 +67,7 @@ function Contact() {
           className="bg-white rounded-2xl p-6 shadow-sm"
         >
           <p className="text-blue-600 text-sm font-semibold mb-2">Phone</p>
-          <h3 className="text-xl font-bold text-slate-900 mb-1">+252 61 000 0000</h3>
+          <h3 className="text-xl font-bold text-slate-900 mb-1">+252 61 5517681</h3>
           <p className="text-sm text-slate-600">Call us anytime for urgent support.</p>
         </motion.article>
         <motion.article
@@ -79,8 +79,8 @@ function Contact() {
           className="bg-white rounded-2xl p-6 shadow-sm"
         >
           <p className="text-blue-600 text-sm font-semibold mb-2">Location</p>
-          <h3 className="text-xl font-bold text-slate-900 mb-1">Hodan, Mogadishu</h3>
-          <p className="text-sm text-slate-600">Near Taleex road, easy parking available.</p>
+          <h3 className="text-xl font-bold text-slate-900 mb-1">Wadajir, Mogadishu</h3>
+          <p className="text-sm text-slate-600">WADAJIR DISTRICT, JAALE SIYAAD ROAD, EX BARAKAAT Mogadishu.</p>
         </motion.article>
         <motion.article
           variants={fadeUp}
@@ -163,25 +163,22 @@ function Contact() {
           <motion.div variants={fadeUp} className="bg-white rounded-2xl p-7 shadow-sm">
             <h2 className="text-xl sm:text-2xl font-bold text-slate-900 mb-4">Opening Hours</h2>
             <ul className="space-y-3 text-slate-700">
+             
               <li className="flex justify-between border-b border-slate-100 pb-2">
-                <span>Monday - Friday</span>
-                <span>8:00 AM - 8:00 PM</span>
+                <span>Friday</span>
+                <span>12:00 PM - 9:00 PM</span>
               </li>
-              <li className="flex justify-between border-b border-slate-100 pb-2">
-                <span>Saturday</span>
-                <span>9:00 AM - 6:00 PM</span>
-              </li>
-              <li className="flex justify-between">
-                <span>Sunday</span>
-                <span>Emergency Only</span>
-              </li>
+              
             </ul>
           </motion.div>
           <motion.div variants={fadeUp} className="rounded-2xl overflow-hidden shadow-sm">
-            <img
-              src="https://images.unsplash.com/photo-1579684385127-1ef15d508118?auto=format&fit=crop&w=1000&q=80"
-              alt="Medical staff at clinic"
-              className="w-full h-[220px] sm:h-[280px] object-cover"
+            <iframe
+              src="https://www.google.com/maps/embed?pb=!1m16!1m12!1m3!1d2099.0967834684593!2d45.28592224527284!3d2.0229552966901116!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!2m1!1sWADAJIR%20DISTRICT%2C%20JAALE%20SIYAAD%20ROAD%2C%20EX%20BARAKAAT%20Mogadishu!5e0!3m2!1sen!2sso!4v1777056129131!5m2!1sen!2sso"
+              title="Caawiye Poly Clinic location map"
+              className="w-full h-[220px] sm:h-[280px] border-0"
+              allowFullScreen
+              loading="lazy"
+              referrerPolicy="no-referrer-when-downgrade"
             />
           </motion.div>
         </motion.div>

@@ -18,22 +18,30 @@ function Home() {
     {
       title: "Dental",
       image:
-        "https://images.unsplash.com/photo-1588776814546-1ffcf47267a5?auto=format&fit=crop&w=900&q=80",
+        "https://i.pinimg.com/736x/08/55/8e/08558e07cdfd0b096a4f70e7da27460e.jpg",
+      description:
+        "Preventive checkups, treatment planning, and gentle dental care for children and adults.",
     },
     {
       title: "Pediatrics",
       image:
-        "https://images.unsplash.com/photo-1538108149393-fbbd81895907?auto=format&fit=crop&w=900&q=80",
+        "https://i.pinimg.com/1200x/06/33/8c/06338c5618390aa8daa78da139a092a7.jpg",
+      description:
+        "Dedicated child health services with attentive consultations, monitoring, and family guidance.",
     },
     {
       title: "Modern Lab",
       image:
-        "https://images.unsplash.com/photo-1579154204601-01588f351e67?auto=format&fit=crop&w=900&q=80",
+        "https://i.pinimg.com/1200x/9e/25/cf/9e25cfbf6aa61157c5745adf17c6b191.jpg",
+      description:
+        "Accurate testing and dependable diagnostics that support faster, more informed treatment decisions.",
     },
     {
       title: "Pharmacy",
       image:
-        "https://images.unsplash.com/photo-1471864190281-a93a3070b6de?auto=format&fit=crop&w=900&q=80",
+        "https://i.pinimg.com/1200x/cf/f4/a2/cff4a2d58ff2106406637751949e2f1e.jpg",
+      description:
+        "Convenient access to prescribed medicines with clear guidance from our pharmacy team.",
     },
   ];
 
@@ -94,7 +102,7 @@ function Home() {
       image: "/images/qarasta.jpeg",
     },
     {
-      name: "Daahir Imail Hassan",
+      name: "Daahir Ismail Hassan",
       role: "Lab Technician",
       image: "/images/lab.jpeg",
     },
@@ -109,12 +117,6 @@ function Home() {
       image: "/images/cali.jpeg",
     },
   ];
-
-  const founder = {
-    name: "Dr. Durdur",
-    role: "Founder, Caawiye Polyclinic",
-    image: "/images/hero.png",
-  };
 
   const [visibleCards, setVisibleCards] = useState(1);
   const [activeSlide, setActiveSlide] = useState(0);
@@ -205,7 +207,7 @@ function Home() {
             <p className="text-xs font-semibold tracking-[0.08em] text-emerald-100 uppercase mb-5">
               Now accepting new patients
             </p>
-            <h1 className="text-5xl sm:text-6xl leading-[1.05] font-extrabold mb-5 text-white animate-text-rise max-w-2xl">
+            <h1 className="text-4xl sm:text-5xl xl:text-6xl leading-[1.05] font-extrabold mb-5 text-white animate-text-rise max-w-2xl">
               Caawiye Polyclinic Ltd
             </h1>
             <p className="text-2xl sm:text-3xl leading-tight text-emerald-50 mb-4 max-w-xl">
@@ -234,7 +236,7 @@ function Home() {
                 Tour Our Clinic
               </MotionLink>
             </div>
-            <div className="grid grid-cols-3 gap-6 max-w-sm">
+            <div className="grid grid-cols-3 gap-4 sm:gap-6 max-w-sm">
               <div>
                 <p className="text-4xl font-extrabold text-white leading-none mb-1">15+</p>
                 <p className="text-[11px] uppercase tracking-wider text-emerald-100">
@@ -279,18 +281,14 @@ function Home() {
           viewport={{ once: true }}
           className="max-w-5xl mx-auto bg-white rounded-3xl border border-slate-100 shadow-sm p-6 sm:p-8 md:p-10 mb-16 animate-fade-up hover-lift"
         >
-          <div className="grid md:grid-cols-[280px_1fr] gap-8 md:gap-10 items-center">
-            <img
-              src={founder.image}
-              alt={founder.name}
-              className="w-full h-[240px] sm:h-[300px] rounded-2xl object-cover"
-            />
+          <div className="grid lg:grid-cols-[1.2fr_0.8fr] gap-8 md:gap-10 items-start">
             <div className="max-w-2xl">
               <p className="text-xs uppercase tracking-[0.2em] text-green-600 font-semibold mb-3">
                 About & Mission
               </p>
-              <h2 className="text-3xl sm:text-4xl font-extrabold text-slate-900 mb-3">{founder.name}</h2>
-              <p className="text-green-600 text-lg font-semibold mb-5">{founder.role}</p>
+              <h2 className="text-3xl sm:text-4xl font-extrabold text-slate-900 mb-5">
+                Community-focused care you can trust
+              </h2>
               <p className="text-slate-600 text-lg leading-relaxed mb-4">
                 Since 2016, Caawiye Polyclinic has grown through continuous
                 refurbishment and development to better meet the healthcare
@@ -309,6 +307,35 @@ function Home() {
               >
                 Learn More About Us
               </MotionLink>
+            </div>
+            <div className="grid gap-4">
+              <div className="rounded-2xl bg-emerald-50 border border-emerald-100 p-5">
+                <p className="text-sm font-semibold uppercase tracking-[0.16em] text-emerald-700 mb-2">
+                  Our Promise
+                </p>
+                <p className="text-slate-700 leading-relaxed">
+                  Respectful treatment, clear communication, and reliable care
+                  for every patient and family.
+                </p>
+              </div>
+              <div className="rounded-2xl bg-sky-50 border border-sky-100 p-5">
+                <p className="text-sm font-semibold uppercase tracking-[0.16em] text-sky-700 mb-2">
+                  Everyday Support
+                </p>
+                <p className="text-slate-700 leading-relaxed">
+                  From consultations and laboratory services to pharmacy and
+                  follow-up care, we support your full health journey.
+                </p>
+              </div>
+              <div className="rounded-2xl bg-white border border-slate-200 p-5">
+                <p className="text-sm font-semibold uppercase tracking-[0.16em] text-slate-700 mb-2">
+                  Built For The Community
+                </p>
+                <p className="text-slate-700 leading-relaxed">
+                  Our clinic is designed to make quality healthcare more
+                  accessible, practical, and welcoming for local families.
+                </p>
+              </div>
             </div>
           </div>
         </motion.div>
@@ -338,33 +365,48 @@ function Home() {
           viewport={{ once: true }}
           className="text-center text-slate-600 max-w-2xl mx-auto mb-12"
         >
-          We provide a wide range of medical services tailored to meet the
-          needs of our patients.
+          From everyday consultations to diagnostics and pharmacy support, our
+          services are designed to make quality care accessible for every stage
+          of your health journey.
         </motion.p>
         <motion.div
           variants={staggerContainer}
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true }}
-          className="grid sm:grid-cols-2 gap-6 lg:gap-7 max-w-5xl mx-auto"
+          className="grid sm:grid-cols-2 gap-6 lg:gap-7 max-w-6xl mx-auto"
         >
           {services.map((item) => (
             <motion.article
               key={item.title}
               variants={fadeUp}
-              whileHover={{ scale: 1.05 }}
-              className="relative overflow-hidden rounded-2xl h-[230px] sm:h-[260px] lg:h-[280px] shadow-md hover-lift animate-fade-up"
+              whileHover={{ y: -8 }}
+              className="group relative overflow-hidden rounded-[28px] min-h-[320px] sm:min-h-[360px] shadow-md hover-lift animate-fade-up border border-emerald-100/70 bg-white"
             >
               <img
                 src={item.image}
                 alt={item.title}
                 className="absolute inset-0 w-full h-full object-cover"
               />
-              <div className="absolute inset-0 bg-gradient-to-b from-cyan-700/35 to-emerald-500/25" />
-              <div className="absolute top-4 left-4">
-                <p className="bg-slate-800/45 text-white font-semibold text-2xl sm:text-3xl px-4 py-2 rounded-xl">
-                  {item.title}
-                </p>
+              <div className="absolute inset-0 bg-gradient-to-b from-emerald-950/10 via-emerald-900/25 to-slate-950/80 transition-opacity duration-300 group-hover:to-slate-950/85" />
+              <div className="absolute inset-x-0 bottom-0 p-5 sm:p-6">
+                <div className="rounded-2xl bg-white/92 backdrop-blur-sm p-5 sm:p-6 shadow-lg">
+                  <p className="text-xs uppercase tracking-[0.18em] text-emerald-700 font-semibold mb-3">
+                    Core Service
+                  </p>
+                  <h3 className="text-2xl sm:text-3xl font-extrabold text-slate-900 mb-3">
+                    {item.title}
+                  </h3>
+                  <p className="text-slate-600 leading-relaxed mb-5">
+                    {item.description}
+                  </p>
+                  <span className="inline-flex items-center gap-2 text-blue-700 font-semibold">
+                    Learn More
+                    <span aria-hidden="true" className="transition-transform duration-300 group-hover:translate-x-1">
+                      →
+                    </span>
+                  </span>
+                </div>
               </div>
               <Link
                 to="/services"

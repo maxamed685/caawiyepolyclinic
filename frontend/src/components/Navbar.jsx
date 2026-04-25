@@ -20,8 +20,12 @@ function Navbar() {
       transition={{ duration: 0.45, ease: "easeOut" }}
       className="sticky top-0 z-50 border-b border-emerald-100 bg-white/95 backdrop-blur shadow-sm"
     >
-      <div className="site-container py-3 md:py-4 flex items-center justify-between gap-6">
-        <Link to="/" className="flex items-center gap-3 md:gap-4" onClick={() => setMenuOpen(false)}>
+      <div className="site-container py-3 md:py-4 flex items-center justify-between gap-4 md:gap-6">
+        <Link
+          to="/"
+          className="flex min-w-0 items-center gap-3 md:gap-4"
+          onClick={() => setMenuOpen(false)}
+        >
           <span className="grid h-14 w-14 place-items-center rounded-xl border border-slate-200 bg-white shadow-sm ring-2 ring-green-100 md:h-16 md:w-16 animate-glow">
             <img
               src={logo}
@@ -31,7 +35,7 @@ function Navbar() {
               fetchPriority="high"
             />
           </span>
-          <span className="text-sm sm:text-base md:text-3xl font-black tracking-tight text-emerald-700">
+          <span className="min-w-0 text-sm sm:text-lg md:text-2xl lg:text-3xl font-black tracking-tight text-emerald-700 leading-none break-words">
             CAAWIYE POLYCLINIC.LTD
           </span>
         </Link>
